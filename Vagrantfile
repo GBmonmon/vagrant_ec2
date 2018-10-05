@@ -20,8 +20,8 @@ Vagrant.configure('2') do |config|
   # Specify AWS provider configuration
   config.vm.provider 'aws' do |aws, override|
     # Read AWS authentication information from environment variables
-    aws.access_key_id = 'your aws.access_key_id'
-    aws.secret_access_key = 'your aws.secret_access_key'
+    aws.access_key_id = 'aws access key'
+    aws.secret_access_key = 'aws secret access key'
 
     # Specify SSH keypair to use
     aws.keypair_name = 'vagrant'
