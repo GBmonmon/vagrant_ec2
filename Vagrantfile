@@ -6,7 +6,7 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'aws-dummy'
 
   # Provision
-  # config.vm.provision "shell", path "bootstrap.sh" 
+  config.vm.provision "shell", path: "bootstrap.sh" 
 
 
   # Network settings
@@ -14,14 +14,14 @@ Vagrant.configure('2') do |config|
 
   
   # Folder settings
-  config.vm.synced_folder "./share_host", "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/vagrant", disabled: true
 
 
   # Specify AWS provider configuration
   config.vm.provider 'aws' do |aws, override|
     # Read AWS authentication information from environment variables
-    aws.access_key_id = ''
-    aws.secret_access_key = ''
+    aws.access_key_id = 'your aws.access_key_id'
+    aws.secret_access_key = 'your aws.secret_access_key'
 
     # Specify SSH keypair to use
     aws.keypair_name = 'vagrant'
@@ -29,7 +29,7 @@ Vagrant.configure('2') do |config|
     # Specify region, AMI ID, and security group(s)
     aws.instance_type = "t2.micro"
     aws.region = 'us-west-1'
-    aws.ami = 'ami-0782017a917e973e7'
+    aws.ami = 'ami-0bdb828fd58c52235'
     aws.security_groups = ['vagrant']
     aws.tags = { 'Name' => 'vagrant' }
     # Specify username and private key path
